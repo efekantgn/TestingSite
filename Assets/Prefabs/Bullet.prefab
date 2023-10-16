@@ -128,12 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7740cacb1852b004baad2cf55df1da71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetMask:
-    serializedVersion: 2
-    m_Bits: 129
-  HitEffect: {fileID: 7241101158171991982, guid: 27871e82da1675646b775428859f425d,
+  HitEffect: {fileID: 8138660027237408993, guid: e3d559fbd6f296441ad901b8a42dd937,
     type: 3}
-  raycastDistance: 0
 --- !u!96 &3994354574242127691
 TrailRenderer:
   serializedVersion: 2
