@@ -13,9 +13,12 @@ public class Bullet : MonoBehaviour
         tempHit.GetComponent<ParticleSystem>().Play();
         Destroy(tempHit, HitEffect.main.duration);
         Destroy(gameObject);
-        ScoreManager.instance.Score += 10;
+        
         if (collision.transform.gameObject.layer == 7)
+        {
+            ScoreManager.instance.Score += 10;
             Destroy(collision.transform.gameObject);
+        }
     }
     
 

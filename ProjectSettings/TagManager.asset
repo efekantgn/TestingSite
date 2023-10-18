@@ -8,6 +8,9 @@ TagManager:
   - RightHand
   - LeftHand
   - Socket
+  - FxTemporaire
+  - Bullet
+  - Bomb
   layers:
   - Default
   - TransparentFX
@@ -20,8 +23,8 @@ TagManager:
   - Magazine
   - Socket
   - Pocket
-  - 
-  - 
+  - Bomb
+  - BombPin
   - 
   - 
   - 

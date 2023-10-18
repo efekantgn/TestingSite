@@ -98,7 +98,6 @@ public class WristSocket : XRSocketInteractor
 
         if (pObjectToMeasure.TryGetComponent(out MeshFilter meshFilter))
         {
-            Debug.Log(meshFilter.transform.name);
             size = ColliderMeasurer.Instance.Measure(meshFilter.mesh);
         }
 

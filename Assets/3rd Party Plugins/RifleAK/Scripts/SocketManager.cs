@@ -26,7 +26,7 @@ public class SocketManager : MonoBehaviour
     {
         GunManager.SocketedMag = null;
         socketInteractor.showInteractableHoverMeshes = true;
-        arg0.interactableObject.transform.SetParent(oldParent??null);
+        
 
     }
 
