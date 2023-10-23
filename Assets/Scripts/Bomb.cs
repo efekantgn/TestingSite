@@ -69,8 +69,5 @@ public class Bomb : MonoBehaviour
         }
     }
 
-    public void Test()
-    {
-        
-    }
+    
 }

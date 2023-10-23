@@ -12,8 +12,7 @@ GameObject:
   - component: {fileID: 1702879254813772856}
   - component: {fileID: 1702879254813772859}
   - component: {fileID: 1702879254813772858}
-  - component: {fileID: 1702879254813772857}
-  - component: {fileID: 1816407615}
+  - component: {fileID: 2988476688912921797}
   m_Layer: 10
   m_Name: BodySocket
   m_TagString: Untagged
@@ -100,7 +99,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1702879254813772857
+--- !u!114 &2988476688912921797
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -109,7 +108,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1702879254813772860}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
+  m_Script: {fileID: 11500000, guid: d24107f8ebc2f0349a15e6315712e9c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_InteractionManager: {fileID: 0}
@@ -117,7 +116,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_InteractionLayers:
-    m_Bits: 14
+    m_Bits: 2
   m_AttachTransform: {fileID: 1576214299539259664}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
@@ -160,19 +159,6 @@ MonoBehaviour:
   m_SocketScaleMode: 0
   m_FixedScale: {x: 1, y: 1, z: 1}
   m_TargetBoundsSize: {x: 1, y: 1, z: 1}
---- !u!114 &1816407615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1702879254813772860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fb1523e91690dd44a82018422641e49f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  socket: {fileID: 1702879254813772857}
 --- !u!1 &8558137513032141699
 GameObject:
   m_ObjectHideFlags: 0

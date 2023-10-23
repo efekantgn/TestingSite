@@ -512,7 +512,7 @@ MonoBehaviour:
   m_AttachTransform: {fileID: 0}
   m_KeepSelectedTargetValid: 1
   m_DisableVisualsWhenBlockedInGroup: 1
-  m_StartingSelectedInteractable: {fileID: 0}
+  m_StartingSelectedInteractable: {fileID: 6417163189423948700}
   m_StartingTargetFilter: {fileID: 0}
   m_HoverEntered:
     m_PersistentCalls:
@@ -93700,6 +93700,18 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &6417163189423948700 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 793511440569869605, guid: 63f6eb72f273ee94e8cd7af349903e4f,
+    type: 3}
+  m_PrefabInstance: {fileID: 5912462805796382393}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6417163189423948699}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ad34abafad169848a38072baa96cdb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &6417163189423948705 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 793511440569869592, guid: 63f6eb72f273ee94e8cd7af349903e4f,
