@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
 
     public float MovementSpeed=3.5f;
     public float walkingRadius = 20;
-    public float TargetTimer = 3f;
+    public float WaitXSecondOnIdle = 3f;
     [ReadOnlyInspector] public State currentState;
     [ReadOnlyInspector] public Transform TargetPlayer;
     [ReadOnlyInspector] public Animator _animator;
@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        runingTimer = TargetTimer;
+        runingTimer = WaitXSecondOnIdle;
         currentState = State.Idle;
         _navMeshAgent.speed = MovementSpeed;
     }
@@ -49,7 +49,6 @@ public class Enemy : MonoBehaviour
 
     private void OnEnemyUndetect()
     {
-        Debug.Log("EnemyUndetect");
         ChangeActiveState(State.Idle);
     }
 
@@ -61,7 +60,6 @@ public class Enemy : MonoBehaviour
 
     private void OnEnemyDetect()
     {
-        Debug.Log("EnemyDetect");
         ChangeActiveState(State.Fire);
     }
 
@@ -118,7 +116,7 @@ public class Enemy : MonoBehaviour
         if (runingTimer < 0)
         {
             ChangeActiveState(State.Move);
-            runingTimer = Random.Range(1, TargetTimer);
+            runingTimer = Random.Range(1, WaitXSecondOnIdle);
         }
     }
 
