@@ -13,7 +13,6 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
-    public Vector3 YOffset;
     [ReadOnlyInspector] public bool canSeePlayer;
     [ReadOnlyInspector] public Transform TargetPlayer;
     [ReadOnlyInspector] public Enemy Enemy;
@@ -49,7 +48,7 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position+ YOffset, radius,targetMask);
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius,targetMask);
         
         if (rangeChecks.Length > 0)
         {
@@ -62,13 +61,13 @@ public class FieldOfView : MonoBehaviour
             for (int i = 0; i < rangeChecks.Length; i++)
             {
                 
-                Vector3 directionToTarget = (target.position - transform.position + YOffset).normalized;
+                Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-                if (Vector3.Angle(transform.forward + YOffset, directionToTarget) < angle / 2)
+                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
                 {
-                    float distanceToTarget = Vector3.Distance(transform.position + YOffset, target.position);
+                    float distanceToTarget = Vector3.Distance(transform.position , target.position);
 
-                    if (!Physics.Raycast(transform.position + YOffset, directionToTarget, distanceToTarget, obstructionMask))
+                    if (!Physics.Raycast(transform.position , directionToTarget, distanceToTarget, obstructionMask))
                     {
                         if (!canSeePlayer)
                         {

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public ParticleSystem HitEffect;
+    public float DamageAmount=10;
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -14,11 +15,16 @@ public class Bullet : MonoBehaviour
         Destroy(tempHit, HitEffect.main.duration);
         Destroy(gameObject);
         
-        if (collision.transform.gameObject.layer == 7)
+        //if (collision.transform.gameObject.layer == 7)
+        //{
+        //    ScoreManager.instance.Score += 10;
+        //    Destroy(collision.transform.gameObject);
+        //}
+        if (collision.transform.TryGetComponent<Enemy>(out Enemy pEnemy))
         {
-            ScoreManager.instance.Score += 10;
-            Destroy(collision.transform.gameObject);
+            pEnemy.DamageMe(DamageAmount);
         }
+
     }
     
 

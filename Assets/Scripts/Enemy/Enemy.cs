@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Vitals;
 
 public class Enemy : MonoBehaviour
 {
@@ -24,12 +25,18 @@ public class Enemy : MonoBehaviour
     [ReadOnlyInspector] public Animator _animator;
     [ReadOnlyInspector] public NavMeshAgent _navMeshAgent;
     [ReadOnlyInspector] public FieldOfView _fov;
+    [ReadOnlyInspector] public EnemyWeaponData WeaponData;
+    [ReadOnlyInspector] public Health Health;
     private float runingTimer;
+
+    
 
     [ContextMenu("GetComponents")]
     public void GetComponents()
     {
+        Health = GetComponent<Health>();
         _animator = GetComponentInChildren<Animator>();
+        WeaponData = GetComponentInChildren<EnemyWeaponData>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _fov = GetComponent<FieldOfView>();
     }
@@ -47,25 +54,16 @@ public class Enemy : MonoBehaviour
         _fov.EnemyUndetected += OnEnemyUndetect;
     }
 
-    private void OnEnemyUndetect()
-    {
-        ChangeActiveState(State.Idle);
-    }
 
     private void OnDisable()
     {
         _fov.EnemyDetected -= OnEnemyDetect;
         _fov.EnemyUndetected -= OnEnemyUndetect;
     }
-
-    private void OnEnemyDetect()
-    {
-        ChangeActiveState(State.Fire);
-    }
+    
 
     private void Update()
     {
-
         switch (currentState)
         {
             case State.Move:
@@ -80,21 +78,15 @@ public class Enemy : MonoBehaviour
                 Idle();
                 break;
         }
+    }
+    private void OnEnemyUndetect()
+    {
+        ChangeActiveState(State.Idle);
+    }
 
-        
-
-        //if (currentState != State.Fire && _fov.canSeePlayer )
-        //{
-        //    currentState = State.Fire;
-        //    _animator.SetInteger(CURRENT_STATE, (int)currentState);
-
-        //}
-        //else if (currentState != State.Idle && !_fov.canSeePlayer)
-        //{
-        //    currentState = State.Idle;
-        //    _animator.SetInteger(CURRENT_STATE,(int)currentState);
-        //}
-
+    private void OnEnemyDetect()
+    {
+        ChangeActiveState(State.Fire);
     }
 
     public void ChangeActiveState(State pState)
@@ -106,7 +98,6 @@ public class Enemy : MonoBehaviour
             _navMeshAgent.isStopped = true;
             _navMeshAgent.ResetPath();
         }
-
 
     }
 
@@ -123,7 +114,6 @@ public class Enemy : MonoBehaviour
     private void TakeAim()
     {
         transform.LookAt(TargetPlayer, transform.up);
-        
     }
 
     public void Movement()
@@ -144,6 +134,29 @@ public class Enemy : MonoBehaviour
         _navMeshAgent.SetDestination( hit.position);
     }
 
-    
+    public void DamageMe(float pAmount)
+    {
+        Health.Decrease(pAmount);
+        if (Health.Value <= 0)
+        {
+            
+            ChangeActiveState(State.Dead);
+            GetComponent<CapsuleCollider>().enabled = false;
+            _navMeshAgent.isStopped = true;
+            Destroy(transform.gameObject,GetCurrentAnimatorTime(_animator,"Death"));
+        }
+    }
+    public float GetCurrentAnimatorTime(Animator targetAnim,string pClipName)
+    {
+        
+        AnimationClip[] animationClips = targetAnim.runtimeAnimatorController.animationClips;
+        float totaltime=-1;
+        foreach (var clip in animationClips)
+        {
+            if(clip.name.Equals(pClipName)) totaltime = clip.length;
+
+        }
+        return totaltime;
+    }
 
 }

@@ -4,20 +4,31 @@ using UnityEngine;
 
 public class EnemyWeaponData : MonoBehaviour
 {
+    public Enemy Enemy;
     public Bullet Bullet;
     public float bulletSpeed;
-    public float FireRate;
     public Transform BulletInstantiatePos;
-    private float nextFire;
+
+    [ContextMenu("Getcomponents")]
+    public void GetComponents()
+    {
+        Enemy=GetComponentInParent<Enemy>();
+    }
 
     public void Shoot()
     {
-        if (Time.time > nextFire)
+        Bullet bullet = Instantiate(Bullet, BulletInstantiatePos.position, BulletInstantiatePos.rotation);
+        Vector3 bulletDirection;
+        try
         {
-            nextFire = Time.time + FireRate;
-
-            Bullet bullet = Instantiate(Bullet, BulletInstantiatePos.position, BulletInstantiatePos.rotation);
-            bullet.GetComponent<Rigidbody>().AddForce(BulletInstantiatePos.forward * bulletSpeed);
+            bulletDirection =  Enemy.TargetPlayer.position-Enemy.transform.position;
         }
+        catch
+        {
+            bulletDirection = transform.forward;
+        }
+        bulletDirection = Vector3.Normalize(bulletDirection);
+        bullet.GetComponent<Rigidbody>().AddForce(bulletDirection * bulletSpeed);
+        
     }
 }
