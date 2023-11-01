@@ -13,19 +13,25 @@ public class FieldOfView : MonoBehaviour
 
     public LayerMask targetMask;
     public LayerMask obstructionMask;
+    
     [ReadOnlyInspector] public bool canSeePlayer;
     [ReadOnlyInspector] public Transform TargetPlayer;
     [ReadOnlyInspector] public Enemy Enemy;
 
     public UnityAction EnemyDetected;
     public UnityAction EnemyUndetected;
-
+    /// <summary>
+    /// this variable for eye level scan
+    /// </summary>
+    public Vector3 Yoffset = Vector3.zero;
     
 
     [ContextMenu("Getcomponents")]
     public void GetComponents()
     {
         Enemy = GetComponent<Enemy>();
+        Yoffset.y = Enemy._navMeshAgent.height-Enemy._navMeshAgent.radius;
+        
     }
 
     
@@ -48,30 +54,31 @@ public class FieldOfView : MonoBehaviour
 
     private void FieldOfViewCheck()
     {
-        Collider[] rangeChecks = Physics.OverlapSphere(transform.position, radius,targetMask);
+        Collider[] rangeChecks = Physics.OverlapSphere(transform.position + Yoffset, radius,targetMask);
         
         if (rangeChecks.Length > 0)
         {
             
             SortArrayAcordingToDistance(ref rangeChecks);
             
-            //For loop ile en yakýndakine döndürebilirsin birden fazla obje için;
+            
             Transform target = rangeChecks[0].transform;
 
             for (int i = 0; i < rangeChecks.Length; i++)
             {
                 
-                Vector3 directionToTarget = (target.position - transform.position).normalized;
+                Vector3 directionToTarget = (target.position  - transform.position + Yoffset).normalized;
 
-                if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2)
+                if (Vector3.Angle(transform.forward , directionToTarget) < angle / 2)
                 {
-                    float distanceToTarget = Vector3.Distance(transform.position , target.position);
+                    float distanceToTarget = Vector3.Distance(transform.position + Yoffset, target.position );
 
-                    if (!Physics.Raycast(transform.position , directionToTarget, distanceToTarget, obstructionMask))
+                    
+                    if (!Physics.Raycast(transform.position + Yoffset, directionToTarget, distanceToTarget, obstructionMask))
                     {
+                        
                         if (!canSeePlayer)
                         {
-                            
                             EnemyDetected.Invoke();
                         }
                         Enemy.TargetPlayer = target;
@@ -81,6 +88,7 @@ public class FieldOfView : MonoBehaviour
                     }
                     else
                     {
+                        
                         if (TargetPlayer != null)
                         {
                             EnemyUndetected.Invoke();

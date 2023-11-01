@@ -89,7 +89,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 3050331923567655470}
   _fov: {fileID: 1616125737}
   WeaponData: {fileID: 2735692708720617659}
-  Health: {fileID: 0}
+  Health: {fileID: 7262793262792488622}
 --- !u!195 &3050331923567655470
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -145,11 +145,11 @@ MonoBehaviour:
     m_Bits: 16384
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 16375
-  YOffset: {x: 0, y: 0, z: 0}
+    m_Bits: 1
   canSeePlayer: 0
   TargetPlayer: {fileID: 0}
   Enemy: {fileID: 3050331923567655469}
+  Yoffset: {x: 0, y: 0, z: 0}
 --- !u!114 &7262793262792488622
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0c0381286e373e4baa63f5fee168552, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 0}
+  Enemy: {fileID: 3050331923567655469}
   Bullet: {fileID: -8349171738530865806, guid: 9f4413fdd7332704f9b3a3b5e8170f3f, type: 3}
   bulletSpeed: 5000
   BulletInstantiatePos: {fileID: 5322021476739084791}

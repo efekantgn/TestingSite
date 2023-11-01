@@ -1,4 +1,5 @@
 using Cysharp.Threading.Tasks;
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -113,7 +114,8 @@ public class Enemy : MonoBehaviour
 
     private void TakeAim()
     {
-        transform.LookAt(TargetPlayer, transform.up);
+        Vector3 lookPos = new Vector3(TargetPlayer.position.x, transform.position.y, TargetPlayer.position.z);
+        transform.LookAt(lookPos, transform.up);
     }
 
     public void Movement()
@@ -139,7 +141,6 @@ public class Enemy : MonoBehaviour
         Health.Decrease(pAmount);
         if (Health.Value <= 0)
         {
-            
             ChangeActiveState(State.Dead);
             GetComponent<CapsuleCollider>().enabled = false;
             _navMeshAgent.isStopped = true;

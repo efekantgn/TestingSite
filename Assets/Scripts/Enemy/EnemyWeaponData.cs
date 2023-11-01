@@ -21,7 +21,7 @@ public class EnemyWeaponData : MonoBehaviour
         Vector3 bulletDirection;
         try
         {
-            bulletDirection =  Enemy.TargetPlayer.position-Enemy.transform.position;
+            bulletDirection =  Enemy.TargetPlayer.position-Enemy.transform.position-Enemy._fov.Yoffset/2;
         }
         catch
         {
@@ -31,4 +31,6 @@ public class EnemyWeaponData : MonoBehaviour
         bullet.GetComponent<Rigidbody>().AddForce(bulletDirection * bulletSpeed);
         
     }
+
+    
 }

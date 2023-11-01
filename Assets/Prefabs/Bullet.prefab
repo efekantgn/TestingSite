@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5109327454922622577}
   - component: {fileID: -8349171738530865806}
   - component: {fileID: 3994354574242127691}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HitEffect: {fileID: 8138660027237408993, guid: e3d559fbd6f296441ad901b8a42dd937,
     type: 3}
+  DamageAmount: 10
 --- !u!96 &3994354574242127691
 TrailRenderer:
   serializedVersion: 2
