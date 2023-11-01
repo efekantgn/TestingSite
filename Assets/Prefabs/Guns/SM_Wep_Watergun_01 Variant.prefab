@@ -253,7 +253,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1607291360844622, guid: f528363d2aaa5d748ab9fcd16b601236, type: 3}
       propertyPath: m_Name
-      value: SM_Wep_Watergun_01
+      value: SM_Wep_Watergun_01 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 1607291360844622, guid: f528363d2aaa5d748ab9fcd16b601236, type: 3}
       propertyPath: m_Layer
@@ -881,6 +881,9 @@ MonoBehaviour:
   Hud: {fileID: 982779835}
   SocketedMag: {fileID: 0}
   ShootingType: 0
+  MagazineSpawner: {fileID: 0}
+  WeaponMagazine: {fileID: 8756920536967270887, guid: faf81a0662a14c04c944813161219213,
+    type: 3}
   Bullet: {fileID: 716253302495200834, guid: 9f4413fdd7332704f9b3a3b5e8170f3f, type: 3}
   bulletSpeed: 2000
   TargetMask:

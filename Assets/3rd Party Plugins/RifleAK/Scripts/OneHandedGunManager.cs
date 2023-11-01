@@ -16,36 +16,21 @@ public class OneHandedGunManager : GunManager
     protected override void OnEnable()
     {
         base.OnEnable();
-        GrabInteractable.selectEntered.AddListener(Grabbed);
-        MagSocket.selectEntered.AddListener(MagazineEntered);
-        MagSocket.selectExited.AddListener(MagazineExited);
+        GrabInteractable.selectEntered.AddListener(GunSelectEntered);
     }
-    private void Start()
-    {
-        
-    }
+    
 
     protected override void OnDisable()
     {
         base.OnDisable();
-        GrabInteractable.selectEntered.RemoveListener(Grabbed);
-        MagSocket.selectEntered.RemoveListener(MagazineEntered);
-        MagSocket.selectExited.RemoveListener(MagazineExited);
+        GrabInteractable.selectEntered.RemoveListener(GunSelectEntered);
 
 
     }
 
-    private void MagazineExited(SelectExitEventArgs arg0)
+    public override void GunSelectEntered(SelectEnterEventArgs arg0)
     {
-
-    }
-
-    private void MagazineEntered(SelectEnterEventArgs arg0)
-    {
-
-    }
-    private void Grabbed(SelectEnterEventArgs arg0)
-    {
+        base.GunSelectEntered(arg0);
         ActivateHandButton();
     }
     public void ActivateHandButton()
@@ -73,8 +58,6 @@ public class OneHandedGunManager : GunManager
             RightHandReleaseMag.action.started -= DisableSocket;
             RightHandReleaseMag.action.canceled -= EnableSocket;
         }
-
-        
 
 
     }

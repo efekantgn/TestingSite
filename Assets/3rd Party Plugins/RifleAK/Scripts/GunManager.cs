@@ -27,6 +27,9 @@ public abstract class GunManager : MonoBehaviour
     public Magazine SocketedMag=null;
     public ShootType ShootingType;
 
+    public MagazineSpawner MagazineSpawner;
+    public XRGrabInteractable WeaponMagazine;
+
 
     [Header("Bullet Settings")]
     public GameObject Bullet;
@@ -36,14 +39,30 @@ public abstract class GunManager : MonoBehaviour
     public LayerMask TargetMask;
     public GameObject HitEffect;
 
+    protected virtual void Start()
+    {
+        MagazineSpawner = FindAnyObjectByType<MagazineSpawner>();
+    }
+
     protected virtual void OnEnable()
     {
+
+        GrabInteractable.selectEntered.AddListener(GunSelectEntered);
         GrabInteractable.activated.AddListener(TriggerActivated);
         GrabInteractable.deactivated.AddListener(TriggerDeactivated);
     }
 
+    
+
+    public virtual void GunSelectEntered(SelectEnterEventArgs arg0)
+    {
+        if (MagazineSpawner != null && arg0.interactorObject.transform.TryGetComponent(out XRDirectInteractor component))
+            MagazineSpawner.currentMagazine = WeaponMagazine;
+    }
+
     protected virtual void OnDisable()
     {
+        GrabInteractable.selectEntered.RemoveListener(GunSelectEntered);
         GrabInteractable.activated.RemoveListener(TriggerActivated);
         GrabInteractable.deactivated.RemoveListener(TriggerDeactivated);
         

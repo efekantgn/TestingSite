@@ -572,7 +572,7 @@ Transform:
   m_GameObject: {fileID: 2908390582112776534}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 9001322659002426875}
@@ -829,6 +829,8 @@ MonoBehaviour:
   Hud: {fileID: 1830241363719503205}
   SocketedMag: {fileID: 0}
   ShootingType: 0
+  MagazineSpawner: {fileID: 0}
+  WeaponMagazine: {fileID: 264731775, guid: f9815c239dcb1594789ead090b4fa969, type: 3}
   Bullet: {fileID: 716253302495200834, guid: 9f4413fdd7332704f9b3a3b5e8170f3f, type: 3}
   bulletSpeed: 6000
   TargetMask:

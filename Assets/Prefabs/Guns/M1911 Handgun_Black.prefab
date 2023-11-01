@@ -349,8 +349,11 @@ MonoBehaviour:
   Hud: {fileID: 346703986659284725}
   SocketedMag: {fileID: 0}
   ShootingType: 0
+  MagazineSpawner: {fileID: 0}
+  WeaponMagazine: {fileID: 114305205199381184, guid: bf43616d9c6804248aa4976107f3d1a1,
+    type: 3}
   Bullet: {fileID: 716253302495200834, guid: 9f4413fdd7332704f9b3a3b5e8170f3f, type: 3}
-  bulletSpeed: 2000
+  bulletSpeed: 5000
   TargetMask:
     serializedVersion: 2
     m_Bits: 128
