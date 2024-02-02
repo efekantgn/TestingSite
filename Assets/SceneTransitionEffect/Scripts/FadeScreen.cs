@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class FadeScreen : MonoBehaviour
 {
     public bool fadeOnStart = true;
@@ -11,21 +13,30 @@ public class FadeScreen : MonoBehaviour
     public string colorPropertyName = "_Color";
     private Renderer rend;
 
+    
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<Renderer>();
+        if (rend == null)
+        {
+            Debug.LogError("Please add Mesh Renderer and Mesh Filter");
+            return;
+        }
+
         rend.enabled = false;
 
         if (fadeOnStart)
             FadeIn();
     }
 
+    [ContextMenu(nameof(FadeIn))]
     public void FadeIn()
     {
         Fade(1, 0);
     }
-    
+
+    [ContextMenu(nameof(FadeOut))]
     public void FadeOut()
     {
         Fade(0, 1);
@@ -38,8 +49,8 @@ public class FadeScreen : MonoBehaviour
 
     public IEnumerator FadeRoutine(float alphaIn,float alphaOut)
     {
+        SceneTransitionManager.Instance.OnSceneLoadStarted.Invoke();
         rend.enabled = true;
-
         float timer = 0;
         while(timer <= fadeDuration)
         {
@@ -56,7 +67,10 @@ public class FadeScreen : MonoBehaviour
         newColor2.a = alphaOut;
         rend.material.SetColor(colorPropertyName, newColor2);
 
-        if(alphaOut == 0)
+        if (alphaOut == 0)
+        {
             rend.enabled = false;
+            SceneTransitionManager.Instance.OnSceneLoadEnded.Invoke();
+        }
     }
 }

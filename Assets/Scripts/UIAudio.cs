@@ -11,7 +11,7 @@ public class UIAudio : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(clickAudioName != "")
+        if (clickAudioName != "")
         {
             AudioManager.instance.Play(clickAudioName);
         }
@@ -31,5 +31,6 @@ public class UIAudio : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler
         {
             AudioManager.instance.Play(hoverExitAudioName);
         }
+
     }
 }

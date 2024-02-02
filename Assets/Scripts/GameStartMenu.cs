@@ -20,6 +20,8 @@ public class GameStartMenu : MonoBehaviour
     public Button[] dificultyButtons;
     public List<Button> returnButtons;
 
+    public SceneField LevelScene;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -55,7 +57,7 @@ public class GameStartMenu : MonoBehaviour
     public void StartGame()
     {
         HideAll();
-        SceneTransitionManager.singleton.GoToSceneAsync(1);
+        SceneTransitionManager.Instance.LoadSceneAsync(LevelScene);
     }
 
     public void HideAll()

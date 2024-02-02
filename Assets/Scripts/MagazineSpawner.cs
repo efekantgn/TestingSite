@@ -29,7 +29,7 @@ public class MagazineSpawner : MonoBehaviour
     private void MagazineSpawnerGrabbed(SelectEnterEventArgs arg0)
     {
         if (currentMagazine == null) return;
-        XRGrabInteractable magazine = Instantiate(currentMagazine,transform.position,transform.rotation);
+        XRGrabInteractable magazine = Instantiate(currentMagazine, transform.position, transform.rotation);
         XRInteractionManager.SelectEnter(arg0.interactorObject, magazine);
     }
 }

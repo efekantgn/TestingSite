@@ -36,6 +36,6 @@ public class Player : MonoBehaviour
     }
     public void GoToMainMenu()
     {
-        SceneTransitionManager.singleton.GoToScene(0);
+        //SceneTransitionManager.Instance.GoToScene(Scenes.Instance.Scene1);
     }
 }
