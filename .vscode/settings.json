@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "TestingSite.sln"
+    "dotnet.defaultSolution": "TestingSite.sln",
+    "dotnet.preferCSharpExtension": true
 }
